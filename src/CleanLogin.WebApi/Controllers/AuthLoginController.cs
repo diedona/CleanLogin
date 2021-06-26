@@ -26,6 +26,9 @@ namespace CleanLogin.WebApi.Controllers
         public async Task<ActionResult<UsuarioDTO>> Post([FromBody] FazerLoginCommand fazerLogin)
         {
             var usuarioDTO = await _mediator.Send(fazerLogin);
+            if (usuarioDTO == null)
+                return BadRequest("Dados inválidos");
+
             return Ok(usuarioDTO);
         }
     }

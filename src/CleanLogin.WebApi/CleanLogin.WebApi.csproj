@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CleanLogin.Application\CleanLogin.Application.csproj" />
     <ProjectReference Include="..\CleanLogin.Domain\CleanLogin.Domain.csproj" />
+    <ProjectReference Include="..\CleanLogin.Infra\CleanLogin.Infra.csproj" />
   </ItemGroup>
 
 </Project>

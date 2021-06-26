@@ -12,18 +12,22 @@ namespace CleanLogin.Application.UseCases.Login.FazerLogin
 {
     public class FazerLoginHandler : IRequestHandler<FazerLoginCommand, UsuarioDTO>
     {
-        private readonly ITokenService tokenService;
+        private readonly ITokenService _TokenService;
 
         public FazerLoginHandler(ITokenService tokenService)
         {
-            this.tokenService = tokenService;
+            this._TokenService = tokenService;
         }
 
         public async Task<UsuarioDTO> Handle(FazerLoginCommand request, CancellationToken cancellationToken)
         {
+            if (!request.NomeDeUsuario.Equals("adm") && !request.Senha.Equals("123"))
+                return null;
+
             return new UsuarioDTO()
             {
-                Id = Guid.NewGuid()
+                Id = Guid.NewGuid(),
+                Token = _TokenService.GerarToken(request)
             };
         }
     }
