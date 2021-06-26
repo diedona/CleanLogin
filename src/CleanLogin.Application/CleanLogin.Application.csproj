@@ -12,4 +12,8 @@
     <ProjectReference Include="..\CleanLogin.Domain\CleanLogin.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
 </Project>

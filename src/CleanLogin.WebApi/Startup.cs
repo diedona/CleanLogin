@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,7 @@ namespace CleanLogin.WebApi
         {
 
             services.AddControllers();
+            services.AddMediatR(typeof(CleanLogin.Application.StartPoint));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanLogin.WebApi", Version = "v1" });

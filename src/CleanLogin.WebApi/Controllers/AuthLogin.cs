@@ -1,4 +1,6 @@
-﻿using CleanLogin.Domain.DTOs.Usuario;
+﻿using CleanLogin.Application.UseCases.Login.FazerLogin;
+using CleanLogin.Domain.DTOs.Usuario;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,17 +14,18 @@ namespace CleanLogin.WebApi.Controllers
     [ApiController]
     public class AuthLogin : ControllerBase
     {
+        private readonly IMediator mediatr;
+
+        public AuthLogin(IMediator mediatr)
+        {
+            this.mediatr = mediatr;
+        }
+
         [HttpPost]
         [Route("")]
-        public ActionResult<UsuarioDTO> Post([FromBody] LoginDTO loginDTO)
+        public async Task<ActionResult<UsuarioDTO>> Post([FromBody] FazerLoginCommand fazerLogin)
         {
-            UsuarioDTO usuarioDTO = new UsuarioDTO()
-            {
-                Id = Guid.NewGuid(),
-                Nome = "João",
-                Sobrenome = "da Silva"
-            };
-
+            var usuarioDTO = await this.mediatr.Send(fazerLogin);
             return Ok(usuarioDTO);
         }
     }
