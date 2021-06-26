@@ -12,11 +12,11 @@ namespace CleanLogin.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthLogin : ControllerBase
+    public class AuthLoginController : ControllerBase
     {
         private readonly IMediator mediatr;
 
-        public AuthLogin(IMediator mediatr)
+        public AuthLoginController(IMediator mediatr)
         {
             this.mediatr = mediatr;
         }
