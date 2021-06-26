@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanLogin.Infra.Login
+namespace CleanLogin.Application.Login
 {
     public static class Settings
     {

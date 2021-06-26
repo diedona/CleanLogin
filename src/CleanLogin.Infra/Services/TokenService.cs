@@ -1,11 +1,12 @@
 ﻿using CleanLogin.Application.Interfaces.Services;
+using CleanLogin.Application.Login;
 using CleanLogin.Application.UseCases.Login.FazerLogin;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace CleanLogin.Infra.Login
+namespace CleanLogin.Infra.Services
 {
     public class TokenService : ITokenService
     {
