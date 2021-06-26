@@ -1,4 +1,5 @@
 using CleanLogin.WebApi.Middlewares;
+using CleanLogin.WebApi.Settings;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,16 +24,18 @@ namespace CleanLogin.WebApi
             Configuration = configuration;
         }
 
+        private string _AppSettingsSection => "AppSettings";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AdicionarDependencyInjection();
+            AppSettings appSettings = Configuration.GetSection(_AppSettingsSection).Get<AppSettings>();
+            services.AdicionarDependencyInjection(_AppSettingsSection, Configuration);
             services.AddCors();
             services.AddControllers();
-            services.AddMediatR(typeof(CleanLogin.Application.StartPoint));
-            services.AdicionarAutenticacao();
+            services.AdicionarAutenticacao(appSettings);
+            services.AddMediatR(typeof(Application.StartPoint));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanLogin.WebApi", Version = "v1" });
