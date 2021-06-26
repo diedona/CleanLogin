@@ -14,18 +14,18 @@ namespace CleanLogin.WebApi.Controllers
     [ApiController]
     public class AuthLoginController : ControllerBase
     {
-        private readonly IMediator mediatr;
+        private readonly IMediator _mediator;
 
         public AuthLoginController(IMediator mediatr)
         {
-            this.mediatr = mediatr;
+            _mediator = mediatr;
         }
 
         [HttpPost]
         [Route("")]
         public async Task<ActionResult<UsuarioDTO>> Post([FromBody] FazerLoginCommand fazerLogin)
         {
-            var usuarioDTO = await this.mediatr.Send(fazerLogin);
+            var usuarioDTO = await _mediator.Send(fazerLogin);
             return Ok(usuarioDTO);
         }
     }
