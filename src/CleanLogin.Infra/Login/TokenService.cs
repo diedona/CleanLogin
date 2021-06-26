@@ -1,4 +1,5 @@
-﻿using CleanLogin.Application.UseCases.Login.FazerLogin;
+﻿using CleanLogin.Application.Interfaces.Services;
+using CleanLogin.Application.UseCases.Login.FazerLogin;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace CleanLogin.Infra.Login
 {
-    public class TokenService
+    public class TokenService : ITokenService
     {
         public string GerarToken(FazerLoginCommand fazerLogin)
         {
