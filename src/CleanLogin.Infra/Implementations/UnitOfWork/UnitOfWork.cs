@@ -1,5 +1,7 @@
 ﻿using CleanLogin.Application.Interfaces.Repositories;
 using CleanLogin.Application.Interfaces.UnitOfWork;
+using CleanLogin.Infra.Database;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,15 @@ namespace CleanLogin.Infra.Implementations.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
+        private readonly CleanLoginContext _Context;
+        private IDbContextTransaction _Transaction;
+
         public IUsuarioRepository UsuarioRepository { get; }
+
+        public UnitOfWork(CleanLoginContext context)
+        {
+            _Context = context;
+        }
 
         public UnitOfWork(IUsuarioRepository usuarioRepository)
         {
@@ -19,17 +29,17 @@ namespace CleanLogin.Infra.Implementations.UnitOfWork
 
         public void Begin()
         {
-            throw new NotImplementedException();
+            _Transaction = _Context.Database.BeginTransaction();
         }
 
-        public int Commit()
+        public void Commit()
         {
-            throw new NotImplementedException();
+            _Transaction.Commit();
         }
 
         public void RollBack()
         {
-            throw new NotImplementedException();
+            _Transaction.Rollback();
         }
     }
 }

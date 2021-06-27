@@ -10,7 +10,7 @@ namespace CleanLogin.Application.Interfaces.UnitOfWork
     public interface IUnitOfWork
     {
         void Begin();
-        int Commit();
+        void Commit();
         void RollBack();
 
         IUsuarioRepository UsuarioRepository { get; }

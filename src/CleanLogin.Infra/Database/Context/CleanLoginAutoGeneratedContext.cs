@@ -37,6 +37,10 @@ namespace CleanLogin.Infra.Database.Context
                     .IsRequired()
                     .HasMaxLength(150);
 
+                entity.Property(e => e.NomeDeUsuario)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.Senha)
                     .IsRequired()
                     .HasMaxLength(800);

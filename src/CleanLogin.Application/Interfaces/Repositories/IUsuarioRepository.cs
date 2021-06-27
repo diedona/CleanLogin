@@ -9,6 +9,6 @@ namespace CleanLogin.Application.Interfaces.Repositories
 {
     public interface IUsuarioRepository
     {
-        UsuarioDTO CarregarPorNomeDeUsuario(string nome);
+        UsuarioDTO CarregarPorNomeDeUsuario(string nomeDeUsuario);
     }
 }

@@ -13,5 +13,6 @@ namespace CleanLogin.Infra.Database.Entities
         public string Sobrenome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
+        public string NomeDeUsuario { get; set; }
     }
 }
