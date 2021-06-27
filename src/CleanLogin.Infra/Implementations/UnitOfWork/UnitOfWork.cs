@@ -17,27 +17,28 @@ namespace CleanLogin.Infra.Implementations.UnitOfWork
 
         public IUsuarioRepository UsuarioRepository { get; }
 
-        public UnitOfWork(CleanLoginContext context)
+        public UnitOfWork(CleanLoginContext context, IUsuarioRepository usuarioRepository)
         {
+            UsuarioRepository = usuarioRepository;
             _Context = context;
         }
 
-        public UnitOfWork(IUsuarioRepository usuarioRepository)
+        public int SaveChanges()
         {
-            UsuarioRepository = usuarioRepository;
+            return _Context.SaveChanges();
         }
 
-        public void Begin()
+        public void BeginTransaction()
         {
             _Transaction = _Context.Database.BeginTransaction();
         }
 
-        public void Commit()
+        public void CommitTransaction()
         {
             _Transaction.Commit();
         }
 
-        public void RollBack()
+        public void RollBackTransaction()
         {
             _Transaction.Rollback();
         }
