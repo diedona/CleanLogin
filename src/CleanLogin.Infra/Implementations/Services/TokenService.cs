@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace CleanLogin.Infra.Services
+namespace CleanLogin.Infra.Implementations.Services
 {
     public class TokenService : ITokenService
     {

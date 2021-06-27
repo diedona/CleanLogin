@@ -1,6 +1,6 @@
 ﻿using CleanLogin.Application.Interfaces.App;
 using CleanLogin.Application.Interfaces.Services;
-using CleanLogin.Infra.Services;
+using CleanLogin.Infra.Implementations.Services;
 using CleanLogin.WebApi.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
