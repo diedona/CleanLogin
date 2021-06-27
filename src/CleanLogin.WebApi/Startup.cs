@@ -1,3 +1,4 @@
+using CleanLogin.Infra.Database;
 using CleanLogin.WebApi.Middlewares;
 using CleanLogin.WebApi.Settings;
 using MediatR;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +33,7 @@ namespace CleanLogin.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             AppSettings appSettings = Configuration.GetSection(_AppSettingsSection).Get<AppSettings>();
+            services.AddDbContext<CleanLoginContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AdicionarDependencyInjection(_AppSettingsSection, Configuration);
             services.AddCors();
             services.AddControllers();
