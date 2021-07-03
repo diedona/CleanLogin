@@ -8,9 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["src/CleanLogin.WebApi/CleanLogin.WebApi.csproj", "src/CleanLogin.WebApi/"]
-COPY ["src/CleanLogin.Application/CleanLogin.Application.csproj", "src/CleanLogin.Application/"]
-COPY ["src/CleanLogin.Domain/CleanLogin.Domain.csproj", "src/CleanLogin.Domain/"]
-COPY ["src/CleanLogin.Infra/CleanLogin.Infra.csproj", "src/CleanLogin.Infra/"]
 RUN dotnet restore "src/CleanLogin.WebApi/CleanLogin.WebApi.csproj"
 COPY . .
 WORKDIR "/src/src/CleanLogin.WebApi"

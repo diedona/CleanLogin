@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  cleanlogin.webapi:
+    image: ${DOCKER_REGISTRY-}cleanloginwebapi
+    build:
+      context: .
+      dockerfile: src/CleanLogin.WebApi/Dockerfile
+    ports:
+        - "24024:443"
